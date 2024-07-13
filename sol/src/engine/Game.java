@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import exceptions.InvalidTargetException;
+import exceptions.NotEnoughActionsException;
 import model.characters.Explorer;
 import model.characters.Fighter;
 import model.characters.Hero;
@@ -17,14 +19,12 @@ import model.world.Cell;
 import model.world.CharacterCell;
 import model.world.CollectibleCell;
 import model.world.TrapCell;
-import exceptions.InvalidTargetException;
-import exceptions.NotEnoughActionsException;
 
 public class Game {
 
-	public static ArrayList<Hero> availableHeroes = new ArrayList<Hero>();
-	public static ArrayList<Hero> heroes = new ArrayList<Hero>();
-	public static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
+	public static ArrayList<Hero> availableHeroes = new ArrayList<>();
+	public static ArrayList<Hero> heroes = new ArrayList<>();
+	public static ArrayList<Zombie> zombies = new ArrayList<>();
 	public static Cell[][] map = new Cell[15][15];
 
 	public static void loadHeroes(String filePath) throws IOException {
@@ -53,9 +53,9 @@ public class Game {
 			zombie.setTarget(null);
 		}
 		spawnNewZombie();
-		for (int i = 0; i < map.length; i++)
-			for (int j = 0; j < map[i].length; j++)
-				map[i][j].setVisible(false);
+		for (Cell[] element : map)
+			for (int j = 0; j < element.length; j++)
+				element[j].setVisible(false);
 		for (Hero hero : heroes) {
 			hero.setActionsAvailable(hero.getMaxActions());
 			hero.setTarget(null);
@@ -96,10 +96,10 @@ public class Game {
 
 	public static boolean checkWin() {
 		int remainingVaccines = 0;
-		for (int i = 0; i < map.length; i++) {
-			for (int j = 0; j < map[i].length; j++) {
-				if (map[i][j] instanceof CollectibleCell
-						&& ((CollectibleCell) map[i][j]).getCollectible() instanceof Vaccine)
+		for (Cell[] element : map) {
+			for (int j = 0; j < element.length; j++) {
+				if (element[j] instanceof CollectibleCell
+						&& ((CollectibleCell) element[j]).getCollectible() instanceof Vaccine)
 					remainingVaccines++;
 			}
 		}
@@ -111,10 +111,10 @@ public class Game {
 
 	public static boolean checkGameOver() {
 		if (heroes.size() > 0) {
-			for (int i = 0; i < map.length; i++) {
-				for (int j = 0; j < map[i].length; j++) {
-					if (map[i][j] instanceof CollectibleCell
-							&& ((CollectibleCell) map[i][j]).getCollectible() instanceof Vaccine)
+			for (Cell[] element : map) {
+				for (int j = 0; j < element.length; j++) {
+					if (element[j] instanceof CollectibleCell
+							&& ((CollectibleCell) element[j]).getCollectible() instanceof Vaccine)
 						return false;
 				}
 			}

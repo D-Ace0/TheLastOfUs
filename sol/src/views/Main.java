@@ -1,27 +1,33 @@
 package views;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import windowViews.*;
+import newWindowViews.*;
 
-public class Main extends Application{
+public class Main extends Application {
 
-	public static Stage window;
-	private Scene introWindow;
-	@Override
-	public void start(Stage primarystage) throws Exception {
-		window = primarystage;
-		window.setTitle("The Last Of Us");
-		
-		window.setScene(new windowViews.IntroWindow().getIntroWindow());
-		
-		window.setFullScreen(true);
-		window.show();
-	}
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+    public static Stage window;
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        window.setTitle("The Last Of Us");
+
+        IntroWindow introWindow = new IntroWindow(window);
+        Scene introScene = introWindow.getIntroScene(); 
+        // Load CSS file
+        
+        Scene scene = new Scene(new Group(), 1366, 768);
+        scene.getStylesheets().add(getClass().getResource("/styles/styles.css").toExternalForm());
+        
+        window.setScene(introScene);
+        window.setFullScreen(true);
+        window.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

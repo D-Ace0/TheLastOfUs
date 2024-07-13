@@ -3,16 +3,16 @@ package model.characters;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import model.collectibles.Supply;
-import model.collectibles.Vaccine;
-import model.world.CharacterCell;
-import model.world.CollectibleCell;
-import model.world.TrapCell;
 import engine.Game;
 import exceptions.InvalidTargetException;
 import exceptions.MovementException;
 import exceptions.NoAvailableResourcesException;
 import exceptions.NotEnoughActionsException;
+import model.collectibles.Supply;
+import model.collectibles.Vaccine;
+import model.world.CharacterCell;
+import model.world.CollectibleCell;
+import model.world.TrapCell;
 
 public abstract class Hero extends Character {
 
@@ -26,8 +26,8 @@ public abstract class Hero extends Character {
 		super(name, maxHp, attackDamage);
 		this.maxActions = maxActions;
 		this.actionsAvailable = maxActions;
-		this.supplyInventory = new ArrayList<Supply>();
-		this.vaccineInventory = new ArrayList<Vaccine>();
+		this.supplyInventory = new ArrayList<>();
+		this.vaccineInventory = new ArrayList<>();
 	}
 
 	public int getActionsAvailable() {

@@ -2,10 +2,10 @@ package model.characters;
 
 import java.awt.Point;
 
-import model.world.CharacterCell;
 import engine.Game;
 import exceptions.InvalidTargetException;
 import exceptions.NotEnoughActionsException;
+import model.world.CharacterCell;
 
 public class Zombie extends Character {
 
@@ -15,6 +15,7 @@ public class Zombie extends Character {
 		super("Zombie " + ++ZOMBIES_COUNT, 40, 10);
 	}
 
+	@Override
 	public void attack() throws NotEnoughActionsException, InvalidTargetException {
 		Point p = getLocation();
 		for (int i = -1; i <= 1; i++) {

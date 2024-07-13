@@ -1,9 +1,9 @@
 /**
 
- * 
+ *
  */
 /**
- * @author ahmed
+ * @author Ahmed
  *
  */
 module sol {

@@ -4,42 +4,23 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import model.characters.Direction;
 import model.characters.Explorer;
 import model.characters.Fighter;
 import model.characters.Hero;
 import model.characters.Medic;
-import model.characters.Zombie;
-import model.collectibles.Collectible;
-import model.collectibles.Supply;
-import model.collectibles.Vaccine;
 import model.world.Cell;
 import model.world.CharacterCell;
-import model.world.CollectibleCell;
-import model.world.TrapCell;
-import javafx.scene.input.*;
-
-import java.awt.Point;
-
-import exceptions.MovementException;
-import exceptions.NotEnoughActionsException;
 
 public class View extends Application {
     public static Hero tmp;
@@ -52,7 +33,7 @@ public class View extends Application {
     private static Image vaccineImage;
     private static Image trapImage;
     private static Image zombieImage;
-    
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -63,8 +44,7 @@ public class View extends Application {
         stage.setTitle("Choose A Hero");
         HBox layout1 = new HBox();
 
-        for (int i = 0; i < Game.availableHeroes.size(); i++) {
-            Hero tmp = Game.availableHeroes.get(i);
+        for (Hero tmp : Game.availableHeroes) {
             Label heroName = new Label("Hero Name: " + tmp.getName());
             Label heroDmg = new Label("Damage: " + tmp.getAttackDmg());
             Label heroActions = new Label("Available Actions: " + tmp.getActionsAvailable());
@@ -151,8 +131,8 @@ public void initCells() {
                         button.setGraphic(view);
                     }
                 }
-            } 
-            layout2.setConstraints(button, j, k);
+            }
+            GridPane.setConstraints(button, j, k);
         }
     }
 }

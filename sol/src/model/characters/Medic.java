@@ -9,6 +9,7 @@ public class Medic extends Hero {
 		super(name, maxHp, attackDamage, maxActions);
 	}
 
+	@Override
 	public void useSpecial() throws NoAvailableResourcesException, InvalidTargetException {
 		if (getTarget() instanceof Zombie)
 			throw new InvalidTargetException("You can only cure fellow heroes.");

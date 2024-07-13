@@ -1,0 +1,29 @@
+/* Base style for game buttons */
+.game-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-font-family: "Arial";
+    -fx-padding: 10px 20px;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    -fx-translate-y: 0;
+    -fx-translate-x: 0;
+}
+
+/* Hover effect */
+.game-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-translate-y: -2;
+    -fx-translate-x: 2;
+}
+
+/* Pressed effect */
+.game-button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-translate-y: 1;
+    -fx-translate-x: -1;
+}

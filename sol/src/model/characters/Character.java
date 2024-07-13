@@ -2,10 +2,10 @@ package model.characters;
 
 import java.awt.Point;
 
-import model.world.CharacterCell;
 import engine.Game;
 import exceptions.InvalidTargetException;
 import exceptions.NotEnoughActionsException;
+import model.world.CharacterCell;
 
 public abstract class Character {
 
@@ -31,7 +31,7 @@ public abstract class Character {
 		if (currentHp <= 0) {
 			this.currentHp = 0;
 			onCharacterDeath();
-			
+
 		} else if (currentHp > maxHp) {
 			this.currentHp = maxHp;
 		} else
@@ -78,7 +78,7 @@ public abstract class Character {
 
 	public void onCharacterDeath() {
 		Point p = this.getLocation();
-		
+
 		if (this instanceof Zombie) {
 			Game.zombies.remove(this);
 			Game.spawnNewZombie();
