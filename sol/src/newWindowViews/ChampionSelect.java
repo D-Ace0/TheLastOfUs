@@ -110,6 +110,6 @@ public class ChampionSelect {
 
     private String getImagePathForHero(Hero hero) {
         // Placeholder method to get image path based on hero
-        return "assets/"+hero.getName()+".gif"; // Replace with actual logic
+        return "assets/"+hero.getName()+".gif";
     }
 }
